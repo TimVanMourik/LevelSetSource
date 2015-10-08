@@ -4,13 +4,16 @@
 *.m~
 *.so
 MATLAB/TestFiles
+
+# Qt files
 Qt/TestFiles
 Qt/lib
+Qt/moc
 Qt/debug
 Qt/release
 Qt/obj
-*.pro.user
 Qt/Makefile*
+*.pro.user
 
 # Windows image file caches
 Thumbs.db

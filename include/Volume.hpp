@@ -1,5 +1,5 @@
-#ifndef VOLUME_H
-#define VOLUME_H
+#ifndef VOLUME_HPP
+#define VOLUME_HPP
 
 //----------------------------------------------------------------------------------------------------------------------
 /// @file Volume.hpp
@@ -11,7 +11,6 @@
 #include <string>
 
 #include <armadillo>
-
 
 #include "Matrix44.hpp"
 
@@ -37,6 +36,14 @@ public:
     /// @brief
     Volume<T> sqrt(
             );
+    /// @brief
+    void loadFromFile(
+            const std::string& _fileName
+            );
+    /// @brief
+    void loadFromFile(
+            );
+
 //    /// @brief
 //    friend Volume operator*(
 //            const Volume& _volume1,
@@ -167,9 +174,11 @@ public:
     ~Volume(
             );
 private:
+    std::string m_fileName;
+    bool m_loaded;
     int getDataType(
             );
 };
 
 
-#endif // VOLUME_H
+#endif // VOLUME_HPP

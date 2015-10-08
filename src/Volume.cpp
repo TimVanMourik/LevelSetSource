@@ -15,7 +15,8 @@ Volume<T>::Volume(
         const unsigned int& _y,
         const unsigned int& _z
         ) try :
-    arma::Cube<T>(_x, _y, _z)
+    arma::Cube<T>(_x, _y, _z),
+    m_loaded(true)
 //    boost::multi_array<T, 3>(boost::extents[_x][_y][_z], boost::fortran_storage_order())
 {
     //constuctor of Volume
@@ -29,10 +30,27 @@ template <typename T>
 Volume<T>::Volume(
         const std::string& _fileName
         ) :
-    arma::Cube<T>()
+    arma::Cube<T>(),
+    m_fileName(_fileName),
+    m_loaded(false)
 //    boost::multi_array<T, 3>()
 {
-    if(!std::ifstream(_fileName.c_str()))
+
+}
+
+template <typename T>
+void Volume<T>::loadFromFile(
+        const std::string& _fileName
+        )
+{
+    m_fileName = _fileName;
+    loadFromFile();
+}
+
+template <typename T>
+void Volume<T>::loadFromFile()
+{
+    if(!std::ifstream(m_fileName.c_str()))
     {
         std::cerr << "Sorry, the file that you are trying to open seems not to exist. Please check if the path name is correct.\n";
         return;
@@ -42,7 +60,7 @@ Volume<T>::Volume(
     //the options is passed on to 'fopen', so the option needs to be 'r' (read)
     char* options = (char*)"r";
     std::cerr << "Opening NifTI...\n";
-    nifti_image_open(_fileName.c_str(), options, &inputNifti);
+    nifti_image_open(m_fileName.c_str(), options, &inputNifti);
 //    std::cerr << "Loading NifTI data...\n";
     nifti_image_load(inputNifti);
 
@@ -53,11 +71,16 @@ Volume<T>::Volume(
     this->resize(sizeX, sizeY, sizeZ);
 //    this->resize(boost::extents[sizeX][sizeY][sizeZ]);
     ///@todo This crashes when the datatype of the nifti is different from T (when this.data is smaller than inputNifti.>data
+    ///@todo Look into 4D niftis, does this still work?
 //    if(this->num_elements() * sizeof(T) != inputNifti->nvox * inputNifti->nbyper)
-    if(this->n_elem * sizeof(T) != inputNifti->nvox * inputNifti->nbyper)
+    if(inputNifti->nt > 1)
+    {
+        std::cerr << "Warning: this seems to be a $D NifTI, but you're loading a single volume only.\n";
+    }
+    if(this->n_elem * sizeof(T) * inputNifti->nt != inputNifti->nvox * inputNifti->nbyper)
     {
         std::cerr << "My sincere apologies, the size of the volume does not match the size of the input file. ";
-        std::cerr << "The reason is most likely that the data type of the constucted volume does not match the data type of the input file. ";
+        std::cerr << "The reason is most likely that the data type of the constructed volume does not match the data type of the input file. ";
         std::cerr << "In future releases this problem might be fixed automatically. However, for now an empty Volume is returned.\n";
         return;
     }

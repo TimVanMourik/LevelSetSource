@@ -56,7 +56,7 @@ public:
             const Matrix44& _matrix = Matrix44()
             );
     /// @brief
-//    bool saveAbsGradient(
+//    bool saveDivergence(
 //            const std::string& _outputFile = ""
 //            );
     /// @brief
