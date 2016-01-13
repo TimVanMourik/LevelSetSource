@@ -1,19 +1,22 @@
 %%
+sourceDirectory = '../src';
 allFileNames = 'makeSignedDistanceField.cpp';
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'Matrix.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'Matrix44.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'SignedDistanceField.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'SignedDistanceFieldFactory.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'Volume.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'Volume4D.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'LevelSet/makelevelset3.cpp')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'NifTI/nifti1_io.c')];
+allFileNames = [allFileNames , ' ' fullfile(sourceDirectory, 'NifTI/znzlib.c')];
+allFileNames = [allFileNames , ' '];
 
-sourceFiles =dir('../src');
-files = sourceFiles(~[sourceFiles.isdir]);
-for file = {files.name}      
-    if strcmp(file{1}(end - 1:end), '.c') || strcmp(file{1}(end - 3:end), '.cpp') && ~strcmp(file{1}, 'makeSignedDistanceField.cpp')
-        allFileNames = [allFileNames ' ../src/' file{1}];
-    end
-end
-allFileNames = [allFileNames, ' '];
 
 %%
 libraries = '-L"../lib" -llapack -lblas ';
 % libraries = '-L"/usr/lib64/" -llapack.so.3 -lblas.so.3 ';
-options = '-I../include';
+options = '-I../include -I../include/NifTI -I../include/LevelSet ';
 
 eval(['mex ' allFileNames, libraries, options]);
 

@@ -33,3 +33,6 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.mexa64
+*.Release
+*.Debug

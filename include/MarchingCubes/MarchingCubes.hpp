@@ -3,11 +3,11 @@
 
 
 #include "BoundingBox.hpp"
-#include "ImplicitObject.hpp"
 #include "Position.hpp"
 #include "MarchingCubes/GLData.hpp"
-#include "MarchingCubes/MarchingCubesQuality.hpp"
 #include "MarchingCubes/HashTable.hpp"
+
+class ImplicitObject;
 
 struct GridCell
 {

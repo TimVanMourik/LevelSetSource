@@ -45,7 +45,7 @@ int main(int argc, char *argv[])
         }
     }
 
-    const unsigned int x = 4, y = 4, z = 4;
+    const unsigned int x = 169, y = 180, z = 250;
 
     Matrix44 matrix1;
 //    matrix1.setCustomMatrix();

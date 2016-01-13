@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include "BoundingBox.hpp"
+#include "ImplicitObject.hpp"
 #include "MarchingCubes/MarchingCubes.hpp"
 #include "MarchingCubes/MarchingCubeTables.hpp"
 

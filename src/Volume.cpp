@@ -85,6 +85,9 @@ void Volume<T>::loadFromFile()
         return;
     }
     memcpy(this->memptr(), inputNifti->data, inputNifti->nvox * inputNifti->nbyper);
+    nifti_image_unload(inputNifti);
+    nifti_image_free(inputNifti);
+
     std::cerr << "Volume loaded.\n";
 }
 
@@ -356,6 +359,7 @@ template <typename T>
 Volume<T>::~Volume(
         )
 {
+
 }
 
 template class Volume<double>;

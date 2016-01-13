@@ -119,6 +119,11 @@ void mexFunction( int nlhs, mxArray *plhs[],
             writeVolumeMatrix(x, y) = matrixValues[y * 4 + x];
         }
     }
+    Matrix44 shiftMatrix;
+    shiftMatrix(0, 3) = 1;
+    shiftMatrix(1, 3) = 1;
+    shiftMatrix(2, 3) = 1;
+    writeVolumeMatrix.operator *=(shiftMatrix);
 
     Matrix44 objectTransformationMatrix;
     if(nrhs == 5)

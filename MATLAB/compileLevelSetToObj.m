@@ -1,3 +1,6 @@
+% @todo if the output file cannot be written, it isn't. Fix this to give a
+% proper warning.
+
 %%
 sourceDirectory = '../src';
 allFileNames = 'levelSetToObj.cpp';
@@ -20,15 +23,15 @@ libraries = '-L"../lib" -llapack -lblas ';
 options = '-I../include -I../include/MarchingCubes  -I../include/NifTI ';
 eval(['mex ' allFileNames, libraries, options]);
 
-%%
+%% Test with single SDF
 sdfFile = 'TestFiles/monkey.sdf.nii';
-objFile = 'TestFiles/monkey_reconstructed.obj';
+objFile = 'TestFile/monkey_reconstructed.obj';
 
 levelSetToObj(sdfFile, objFile);
  
-%%
+%% Test with level set 
 levelSetFile = '../../Volumes/brain.layers.nii';
-objFile = 'TestFiles/BrainLayer.obj';
+objFile = 'TestFles/BrainLayer.obj';
 
 levelSetToObj(levelSetFile, objFile);
  

@@ -116,7 +116,7 @@ void Volume4D<T>::loadFromFile()
             std::cerr << "Failure loading the file. Might it be a little too big for your system?\n";
             return;
         }
-        currentDataLocation += m_volumes[i].n_elem * sizeof(T);
+        currentDataLocation += m_volumes[i].n_elem * inputNifti->nbyper;
     }
     ///@todo see if the nifti needs to be closed again!
     std::cerr << "Volume4D loaded.\n";
