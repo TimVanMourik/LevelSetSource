@@ -24,8 +24,8 @@ options = '-I../include -I../include/MarchingCubes  -I../include/NifTI ';
 eval(['mex ' allFileNames, libraries, options]);
 
 %% Test with single SDF
-sdfFile = 'TestFiles/monkey.sdf.nii';
-objFile = 'TestFile/monkey_reconstructed.obj';
+sdfFile = 'TestFiles/cube.sdf.nii';
+objFile = 'TestFiles/cube_reconstructed.obj';
 
 levelSetToObj(sdfFile, objFile);
  
@@ -35,6 +35,11 @@ objFile = 'TestFles/BrainLayer.obj';
 
 levelSetToObj(levelSetFile, objFile);
  
+%% Test with single SDF
+sdfFile = 'TestFiles/cube.sdf.nii';
+objFile = 'TestFile/cube_reconstructed.obj';
+
+levelSetToObj(sdfFile, objFile);
 
 
 

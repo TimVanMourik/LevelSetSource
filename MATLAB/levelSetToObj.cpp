@@ -48,6 +48,7 @@ void levelSetToObj(
             char buff[100];
             snprintf(buff, sizeof(buff), "%02d", i);
             std::string buffAsStdStr = buff;
+            ObjFactory::setOneIndexing(true);
             ObjFactory::exportObject(marchingCubes, fileParts.path + fileParts.name + buffAsStdStr + fileParts.ext);
         }
     }
@@ -58,6 +59,7 @@ void levelSetToObj(
         marchingCubes.setNumberOfSubdivisions(volumes.getSizeX(), volumes.getSizeY(), volumes.getSizeZ());
         marchingCubes.computeGLData();
 
+        ObjFactory::setOneIndexing(true);
         ObjFactory::exportObject(marchingCubes, objFile);
     }
     std::cerr << "Done \n";

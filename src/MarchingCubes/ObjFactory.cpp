@@ -5,6 +5,9 @@
 #include "MarchingCubes/GLData.hpp"
 #include "MarchingCubes/ObjFactory.hpp"
 
+
+bool ObjFactory::s_oneIndexing = false;
+
 void ObjFactory::exportObject(
         const MarchingCubes& _marchingCubes,
         const std::string& _fileName
@@ -38,7 +41,14 @@ void ObjFactory::exportObject(
 
         for(unsigned int i = 0; i < vertices.size(); i += 3)
         {
-            myfile << "v " << vertices[i] << " "<< vertices[i + 1] << " "<< vertices[i + 2] << "\n";
+            if(s_oneIndexing)
+            {
+                myfile << "v " << vertices[i] + 1 << " "<< vertices[i + 1] + 1<< " "<< vertices[i + 2] + 1 << "\n";
+            }
+            else
+            {
+                myfile << "v " << vertices[i] << " "<< vertices[i + 1] << " "<< vertices[i + 2] << "\n";
+            }
         }
         myfile << "\n";
 
@@ -63,4 +73,11 @@ void ObjFactory::exportObject(
         }
         myfile.close();
     }
+}
+
+void ObjFactory::setOneIndexing(
+            const bool _oneIndexing
+             )
+{
+    s_oneIndexing = _oneIndexing;
 }

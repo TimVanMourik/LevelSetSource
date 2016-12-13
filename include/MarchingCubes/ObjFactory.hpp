@@ -15,6 +15,14 @@ public:
             const MarchingCubes& _marchingCubes,
             const std::string& _filename
             );
+    //---------------------------------------------------------------------------------------------------------------------
+    /// @brief Change the indexing default
+    /// @param[in] _filename is the name of the output file
+    static void setOneIndexing(
+            const bool _oneIndexing
+             );
+private:
+    static bool s_oneIndexing;
 };
 
 #endif // OBJGENERATOR_HPP
