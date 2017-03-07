@@ -11,7 +11,7 @@ BASE_DIRECTORY =    ..
 INCLUDE_DIRECTORY = $$BASE_DIRECTORY/include
 SOURCE_DIRECTORY =  $$BASE_DIRECTORY/src
 
-TARGET =            tvm_sdf2obj
+TARGET =            LevelsetToMesh
 
 TEMPLATE =          app
 
@@ -23,7 +23,7 @@ INCLUDEPATH +=      ../include \
                     ../include\MarchingCubes \
                     ../include\NifTI
 
-SOURCES +=          SdfToMesh.cpp \
+SOURCES +=          LevelsetToMesh.cpp \
                     $$SOURCE_DIRECTORY/Volume.cpp \
                     $$SOURCE_DIRECTORY/Volume4D.cpp \
                     $$SOURCE_DIRECTORY/MarchingCubes/GLData.cpp \

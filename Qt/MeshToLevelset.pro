@@ -11,7 +11,7 @@ BASE_DIRECTORY =    ..
 INCLUDE_DIRECTORY = $$BASE_DIRECTORY/include
 SOURCE_DIRECTORY = $$BASE_DIRECTORY/src
 
-TARGET =            tvm_obj2sdf
+TARGET =            MeshToLevelset
 
 TEMPLATE =          app
 
@@ -23,7 +23,7 @@ INCLUDEPATH +=      ../include \
                     ../include\LevelSet \
                     ../include\NifTI
 
-SOURCES +=          ObjToSdf.cpp \
+SOURCES +=          MeshToLevelset.cpp \
                     $$SOURCE_DIRECTORY/LevelSet/makelevelset3.cpp \
                     $$SOURCE_DIRECTORY/NifTI/nifti1_io.c \
                     $$SOURCE_DIRECTORY/NifTI/znzlib.c \
