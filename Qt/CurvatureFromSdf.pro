@@ -20,8 +20,8 @@ OBJECTS_DIR =       ./obj/
 MOC_DIR =           ./moc/
 
 INCLUDEPATH +=      ../include \
-                    ../include\LevelSet \
-                    ../include\NifTI
+                    ../include/LevelSet \
+                    ../include/NifTI
 
 SOURCES +=          CurvatureFromSdf.cpp \
                     $$SOURCE_DIRECTORY/LevelSet/makelevelset3.cpp \
@@ -82,4 +82,3 @@ macx:{
 #                    -L"lib" -lblas-mac64 \
 #                    -lgfortran
 }
-

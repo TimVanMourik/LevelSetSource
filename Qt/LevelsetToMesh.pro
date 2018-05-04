@@ -53,8 +53,8 @@ HEADERS +=          $$INCLUDE_DIRECTORY/Volume.hpp \
                     $$INCLUDE_DIRECTORY/MarchingCubes/VolumeField.hpp
 
 
-#LIBS +=             -L"lib" -llapack-linux64 \
-#                    -L"lib" -lblas-linux64 \
+LIBS +=             -L"lib" -llapack-linux64 \
+                    -L"lib" -lblas-linux64 \
 #                    -lgfortran
 
 #linux-g++:{
